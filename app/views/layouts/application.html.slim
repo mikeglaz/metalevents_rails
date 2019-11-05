@@ -21,7 +21,7 @@ html
       = yield
 
 
-/ strong Current User:&nbsp;
-/ = current_user.name if signed_in?
-/ = debug(params)
+strong Current User:&nbsp;
+= current_user.name if signed_in?
+= debug(params)
 / =console

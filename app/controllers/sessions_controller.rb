@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
       if user.activated?
         sign_in(user)
         flash[:success] = 'Signed in successfully.'
-        # redirect_to user_path(user)
-        redirect_to root_path
+        redirect_to user
       else
         flash[:danger] = 'Your account has not yet been activated.'
         redirect_to root_path

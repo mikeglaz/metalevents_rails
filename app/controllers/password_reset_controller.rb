@@ -29,6 +29,7 @@ class PasswordResetController < ApplicationController
     @user = User.find_by(email: params[:email])
 
     if @user.update_attributes(user_params)
+      flash[:success] = 'Password updated!'
       redirect_to sign_in_path
     else
       render :edit

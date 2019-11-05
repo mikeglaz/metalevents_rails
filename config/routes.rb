@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   resources :venues
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :password_reset, only: [:new, :create, :edit, :update]
 
   root 'events#index'
   # root 'welcome#index'
