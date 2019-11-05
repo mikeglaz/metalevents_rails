@@ -1,30 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  describe "#index" do
+  # describe "#index" do
 
 
-    context 'as a guest' do
-      it 'redirects to sign in page' do
-        get :index
-        expect(response).to redirect_to sign_in_path
-      end
-    end
+  #   context 'as a guest' do
+  #     it 'redirects to sign in page' do
+  #       get :index
+  #       expect(response).to redirect_to sign_in_path
+  #     end
+  #   end
 
-    context "as an authenticated user" do
-      it 'responds successfully' do
-        user = create(:user)
-        sign_in(user)
+  #   context "as an authenticated user" do
+  #     it 'responds successfully' do
+  #       user = create(:user)
+  #       sign_in(user)
 
-        get :index
-        expect(response).to be_successful
-      end
-    end
+  #       get :index
+  #       expect(response).to be_successful
+  #     end
+  #   end
 
-    context 'as an admin' do
+  #   context 'as an admin' do
 
-    end
-  end
+  #   end
+  # end
 
   # describe '#edit' do
   #   context 'as a guest' do
