@@ -1,0 +1,11 @@
+h3
+  = @event.name
+
+= flash[:notice]
+
+= @event.description
+br
+= @event.venue.name
+br
+= @event.date_and_time.strftime("%a, %b %e, %l:%M %p")
+br

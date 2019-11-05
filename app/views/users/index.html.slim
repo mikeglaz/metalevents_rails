@@ -1,0 +1,7 @@
+h3 Users
+
+- @users.each do |user|
+  = link_to user.name, user
+  |&nbsp;|&nbsp;
+  = link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" }
+  br

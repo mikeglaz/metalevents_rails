@@ -1,0 +1,15 @@
+.row.justify-content-center
+  h3 Sign In
+
+.row.justify-content-center
+  .col-md-6
+    = form_for(:session) do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, placeholder: 'Enter your email address', required: true, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, placeholder: 'Enter your password', required: true, class: 'form-control'
+      .form-group
+        = link_to 'Forgot Password?', new_password_reset_path
+      = f.submit 'Sign in', class: "btn btn-primary"

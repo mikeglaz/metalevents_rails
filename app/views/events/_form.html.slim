@@ -1,0 +1,28 @@
+= form_for(@event) do |f|
+  = render 'shared/error_messages', object: @event
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :date_and_time
+    #datetimepicker1.input-group.date[data-target-input="nearest"]
+      = f.text_field :date_and_time, class: 'form-control datetimepicker-input', data: { target: '#datetimepicker1'}
+      / input.form-control.datetimepicker-input[type="text" data-target="#datetimepicker1"]
+      .input-group-append[data-target="#datetimepicker1" data-toggle="datetimepicker"]
+        .input-group-text
+          i.fa.fa-calendar
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.label :venue
+    = f.select :venue_id, Venue.all.map{ |v| [ v.name, v.id ] }, {}, class: 'form-control'
+
+  = f.submit yield(:button_text), class: "btn btn-primary"
+
+    / #datetimepicker1.input-group.date[data-target-input="nearest"]
+    /   input.form-control.datetimepicker-input[type="text" data-target="#datetimepicker1"]
+    /   .input-group-append[data-target="#datetimepicker1" data-toggle="datetimepicker"]
+    /     .input-group-text
+    /       i.fa.fa-calendar

@@ -1,0 +1,305 @@
+State.seed do |s|
+  s.id = 1
+  s.name = "Alabama"
+  s.abbr = "AL"
+end
+
+State.seed do |s|
+  s.id = 2
+  s.name = "Alaska"
+  s.abbr = "AK"
+end
+
+State.seed do |s|
+  s.id = 3
+  s.name = "Arizona"
+  s.abbr = "AZ"
+end
+
+State.seed do |s|
+  s.id = 4
+  s.name = "Arkansas"
+  s.abbr = "AR"
+end
+
+State.seed do |s|
+  s.id = 5
+  s.name = "California"
+  s.abbr = "CA"
+end
+
+State.seed do |s|
+  s.id = 6
+  s.name = "Colorado"
+  s.abbr = "CO"
+end
+
+State.seed do |s|
+  s.id = 7
+  s.name = "Connectcut"
+  s.abbr = "CT"
+end
+
+State.seed do |s|
+  s.id = 8
+  s.name = "Delaware"
+  s.abbr = "DE"
+end
+
+State.seed do |s|
+  s.id = 9
+  s.name = "District of Columbia"
+  s.abbr = "DC"
+end
+
+State.seed do |s|
+  s.id = 10
+  s.name = "Florida"
+  s.abbr = "FL"
+end
+
+State.seed do |s|
+  s.id = 11
+  s.name = "Georgia"
+  s.abbr = "GA"
+end
+
+State.seed do |s|
+  s.id = 12
+  s.name = "Hawaii"
+  s.abbr = "HI"
+end
+
+State.seed do |s|
+  s.id = 13
+  s.name = "Idaho"
+  s.abbr = "ID"
+end
+
+State.seed do |s|
+  s.id = 14
+  s.name = "Illinois"
+  s.abbr = "IL"
+end
+
+State.seed do |s|
+  s.id = 15
+  s.name = "Indiana"
+  s.abbr = "IN"
+end
+
+State.seed do |s|
+  s.id = 16
+  s.name = "Iowa"
+  s.abbr = "IA"
+end
+
+State.seed do |s|
+  s.id = 17
+  s.name = "Kansas"
+  s.abbr = "KS"
+end
+
+State.seed do |s|
+  s.id = 18
+  s.name = "Kentucky"
+  s.abbr = "KY"
+end
+
+State.seed do |s|
+  s.id = 19
+  s.name = "Louisiana"
+  s.abbr = "LA"
+end
+
+State.seed do |s|
+  s.id = 20
+  s.name = "Maine"
+  s.abbr = "ME"
+end
+
+State.seed do |s|
+  s.id = 21
+  s.name = "Montana"
+  s.abbr = "MT"
+end
+
+State.seed do |s|
+  id = 22
+  s.name = "Nebraska"
+  s.abbr = "NE"
+end
+
+State.seed do |s|
+  s.id = 23
+  s.name = "Nevada"
+  s.abbr = "NV"
+end
+
+State.seed do |s|
+  s.id = 24
+  s.name = "New Hampshire"
+  s.abbr = "NH"
+end
+
+State.seed do |s|
+  s.id = 25
+  s.name = "New Jersey"
+  s.abbr = "NJ"
+end
+
+State.seed do |s|
+  s.id = 26
+  s.name = "New Mexico"
+  s.abbr = "NM"
+end
+
+State.seed do |s|
+  s.id = 27
+  s.name = "New York"
+  s.abbr = "NY"
+end
+
+State.seed do |s|
+  s.id = 28
+  s.name = "North Carolina"
+  s.abbr = "NC"
+end
+
+State.seed do |s|
+  s.id = 29
+  s.name = "North Dakota"
+  s.abbr = "ND"
+end
+
+State.seed do |s|
+  s.id = 30
+  s.name = "Ohio"
+  s.abbr = "OH"
+end
+
+State.seed do |s|
+  s.id = 31
+  s.name = "Oklahoma"
+  s.abbr = "OK"
+end
+
+State.seed do |s|
+  s.id = 32
+  s.name = "Oregon"
+  s.abbr = "OR"
+end
+
+State.seed do |s|
+  s.id = 33
+  s.name = "Maryland"
+  s.abbr = "MD"
+end
+
+State.seed do |s|
+  s.id = 34
+  s.name = "Massachusetts"
+  s.abbr = "MA"
+end
+
+State.seed do |s|
+  s.id = 35
+  s.name = "Michigan"
+  s.abbr = "MI"
+end
+
+State.seed do |s|
+  s.id = 36
+  s.name = "Minnesota"
+  s.abbr = "MN"
+end
+
+State.seed do |s|
+  s.id = 37
+  s.name = "Mississippi"
+  s.abbr = "MS"
+end
+
+State.seed do |s|
+  s.id = 38
+  s.name = "Missouri"
+  s.abbr = "MO"
+end
+
+State.seed do |s|
+  s.id = 39
+  s.name = "Pennsylvania"
+  s.abbr = "PA"
+end
+
+State.seed do |s|
+  s.id = 40
+  s.name = "Rhode Island"
+  s.abbr = "RI"
+end
+
+State.seed do |s|
+  s.id = 41
+  s.name = "South Carolina"
+  s.abbr = "SC"
+end
+
+State.seed do |s|
+  s.id = 42
+  s.name = "South Dakota"
+  s.abbr = "SD"
+end
+
+State.seed do |s|
+  s.id = 43
+  s.name = "Tennessee"
+  s.abbr = "TN"
+end
+
+State.seed do |s|
+  s.id = 44
+  s.name = "Texas"
+  s.abbr = "TX"
+end
+
+State.seed do |s|
+  s.id = 45
+  s.name = "Utah"
+  s.abbr = "UT"
+end
+
+State.seed do |s|
+  s.id = 46
+  s.name = "Vermont"
+  s.abbr = "VT"
+end
+
+State.seed do |s|
+  s.id = 47
+  s.name = "Virginia"
+  s.abbr = "VA"
+end
+
+State.seed do |s|
+  s.id = 48
+  s.name = "Washington"
+  s.abbr = "WA"
+end
+
+State.seed do |s|
+  s.id = 49
+  s.name = "West Viginia"
+  s.abbr = "WV"
+end
+
+State.seed do |s|
+  s.id = 50
+  s.name = "Wisconsin"
+  s.abbr = "WI"
+end
+
+State.seed do |s|
+  s.id = 51
+  s.name = "Wyoming"
+  s.abbr = "WY"
+end
