@@ -6,18 +6,16 @@ class Permission
   end
 
   def allow?(controller, action)
-    if user.nil?
-      controller == 'events' && action.in?(%w[index show]) ||
-      controller == 'sessions' ||
-      controller == 'users' && action.in?(%w[new create]) ||
-      controller == 'password_reset'
-    elsif user.admin?
-      true
-    else
-      controller == 'events' && action != 'destroy' ||
-      controller == 'sessions' ||
-      controller == 'account_activation' ||
-      controller == 'users' && action.in?(%w[new create show])
+    return true if controller == 'sessions' || controller == 'account_activation' || controller == 'password_reset'
+    return true if controller == 'users' && action.in?(%w[new create])
+    return true if controller == 'events' && action.in?(%w[index show])
+
+    if user
+      return true if controller == 'users' && action.in?(%w[edit update show])
+      return true if controller == 'events' && action != 'destroy'
+      return true if user.admin?
     end
+
+    false
   end
 end
