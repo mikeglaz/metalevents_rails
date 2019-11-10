@@ -5,9 +5,5 @@ FactoryBot.define do
     activated { true }
     password { "abc" }
     password_confirmation { "abc" }
-
-    factory :admin do
-      admin { true }
-    end
   end
 end
