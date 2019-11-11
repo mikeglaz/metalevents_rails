@@ -2,7 +2,7 @@ h3 Events
 
 - @events.each do |event|
   = link_to event.name, event
-  - if allow?('events', 'destroy')
+  - if allowed?(:events, :destroy)
     |&nbsp;|&nbsp;
     = link_to 'delete', event, method: :delete, data: { confirm: 'Are you sure?' }
   br
