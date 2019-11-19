@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   # before_action :authorize
-  delegate :allowed?, to: :current_permission
-  helper_method :allowed?
+  delegate :allow?, to: :current_permission
+  helper_method :allow?
 
   def current_permission
     @current_permission ||= Permission.new(current_user)
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
 
   def authorize
-    if !current_permission.allowed?(params[:controller], params[:action])
+    if !current_permission.allow?(params[:controller], params[:action])
       flash[:danger] = 'Not authorized.'
       redirect_to root_path
     end

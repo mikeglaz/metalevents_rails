@@ -48,23 +48,46 @@
 
 class Permission
   def initialize(user)
-    allow :users, [:new, :create]
-    allow :sessions, [:new, :create, :destroy]
-    allow :events, [:index, :show]
+    # allow :users, [:new, :create]
+    # allow :sessions, [:new, :create, :destroy]
+    # allow :events, [:index, :show]
 
     if user
-      allow :users, [:edit, :update, :show]
-      allow :events, [:new, :create, :edit, :update]
+      # allow :users, [:edit, :update, :show]
+      # allow :events, [:new, :create]
+      allow :events, [:edit, :update] do |event|
+        print 'Inside Block: '
+        puts "action: #{event}"
+        event.user_id == user.id
+      end
       allow_all if user.admin?
     end
+
+    # puts @allowed_actions
   end
 
+  def allow?(controller, action=nil, resource=nil)
+    # puts controller, action, resource
+    # events, edit, #<Event:0x00005602362b78c8>
+    allowed = @allow_all || @allowed_actions[controller][action]
 
-  def allow(controller, actions)
+    # puts @allowed_actions
+
+    # if resource
+    #   allowed.call(resource)
+    # end
+  end
+
+  def allow_all
+    @allow_all = true
+  end
+
+  def allow(controller, actions, &block)
+    p controller, actions
+    p block
     @allowed_actions ||= {}
 
     if @allowed_actions[controller]
-
       actions.each do |action|
         @allowed_actions[controller].merge!({ action => true})
       end
@@ -73,13 +96,6 @@ class Permission
     end
   end
 
-  def allow_all
-    @allow_all = true
-  end
-
-  def allowed?(controller, action=nil)
-    @allow_all || @allowed_actions[controller][action]
-  end
 end
 
 
