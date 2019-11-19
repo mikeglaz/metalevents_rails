@@ -58,6 +58,7 @@ class Permission
       allow :events, [:edit, :update] do |event|
         print 'Inside Block: '
         puts "action: #{event}"
+        puts 'hello'
         event.user_id == user.id
       end
       allow_all if user.admin?
@@ -69,7 +70,14 @@ class Permission
   def allow?(controller, action=nil, resource=nil)
     # puts controller, action, resource
     # events, edit, #<Event:0x00005602362b78c8>
-    allowed = @allow_all || @allowed_actions[controller][action]
+    # allowed = @allow_all || @allowed_actions[controller][action]
+
+    puts controller, action, resource
+    puts @allowed_actions[controller].call('edit')
+
+    # allowed = @allowed_actions[controller][action]
+
+    # puts allowed
 
     # puts @allowed_actions
 
@@ -83,8 +91,6 @@ class Permission
   end
 
   def allow(controller, actions, &block)
-    p controller, actions
-    p block
     @allowed_actions ||= {}
 
     if @allowed_actions[controller]
@@ -92,7 +98,7 @@ class Permission
         @allowed_actions[controller].merge!({ action => true})
       end
     else
-      @allowed_actions[controller] = Hash[actions.map { |action| [action, true]}]
+      @allowed_actions[controller] = block || Hash[actions.map { |action| [action, true]}]
     end
   end
 
