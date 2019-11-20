@@ -13,6 +13,7 @@ User.seed do |s|
   s.email = 'lekeziah.dingle@gmail.com'
   s.password = 'a'
   s.admin = false
+  s.activated = true
 end
 
 User.seed do |s|
@@ -21,6 +22,7 @@ User.seed do |s|
   s.email = 'mattglaz@gmail.com'
   s.password = 'a'
   s.admin = false
+  s.activated = true
 end
 
 User.seed do |s|

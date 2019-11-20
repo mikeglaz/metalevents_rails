@@ -48,42 +48,35 @@
 
 class Permission
   def initialize(user)
-    # allow :users, [:new, :create]
-    # allow :sessions, [:new, :create, :destroy]
-    # allow :events, [:index, :show]
+    allow :users, [:new, :create]
+    allow :sessions, [:new, :create, :destroy]
+    allow :events, [:index, :show]
+    allow :venues, [:index, :show]
 
     if user
-      # allow :users, [:edit, :update, :show]
-      # allow :events, [:new, :create]
+      allow :users, [:edit, :update, :show]
+      allow :events, [:new, :create]
       allow :events, [:edit, :update] do |event|
-        print 'Inside Block: '
-        puts "action: #{event}"
-        puts 'hello'
         event.user_id == user.id
       end
       allow_all if user.admin?
     end
-
-    # puts @allowed_actions
   end
 
   def allow?(controller, action=nil, resource=nil)
-    # puts controller, action, resource
-    # events, edit, #<Event:0x00005602362b78c8>
-    # allowed = @allow_all || @allowed_actions[controller][action]
+    allowed = @allow_all || @allowed_actions[controller.to_s][action.to_s]
+    # allowed && (allowed == true || resource && allowed.call(resource))
 
-    puts controller, action, resource
-    puts @allowed_actions[controller].call('edit')
 
-    # allowed = @allowed_actions[controller][action]
-
-    # puts allowed
-
-    # puts @allowed_actions
-
-    # if resource
-    #   allowed.call(resource)
-    # end
+    if allowed
+      if allowed == true
+        true
+      elsif resource
+        allowed.call(resource)
+      else
+        false
+      end
+    end
   end
 
   def allow_all
@@ -93,12 +86,12 @@ class Permission
   def allow(controller, actions, &block)
     @allowed_actions ||= {}
 
-    if @allowed_actions[controller]
+    if @allowed_actions[controller.to_s]
       actions.each do |action|
-        @allowed_actions[controller].merge!({ action => true})
+        @allowed_actions[controller.to_s].merge!({ action.to_s => block || true})
       end
     else
-      @allowed_actions[controller] = block || Hash[actions.map { |action| [action, true]}]
+      @allowed_actions[controller.to_s] = Hash[actions.map { |action| [action.to_s, block || true]}]
     end
   end
 

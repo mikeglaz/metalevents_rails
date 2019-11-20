@@ -59,4 +59,8 @@ class EventsController < ApplicationController
     def parsed_date_time
       DateTime.strptime(date_and_time, '%m/%d/%Y %l:%M %p')
     end
+
+    def current_resource
+      @current_resource ||= Event.find(params[:id]) if params[:id]
+    end
 end

@@ -10,4 +10,5 @@ br
 = @event.date_and_time.strftime("%a, %b %e, %l:%M %p")
 br
 
-= link_to 'Edit Event', edit_event_path(@event)
+- if allow?(:events, :edit, @event)
+  = link_to 'Edit Event', edit_event_path(@event)

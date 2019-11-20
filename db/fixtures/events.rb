@@ -9,7 +9,7 @@ end
 
 Event.seed do |s|
   s.id = 2
-  s.user_id = 1
+  s.user_id = 2
   s.venue_id = 1
   s.name = 'Metallica'
   s.description = 'World Tour 2019'
@@ -18,7 +18,7 @@ end
 
 Event.seed do |s|
   s.id = 3
-  s.user_id = 2
+  s.user_id = 3
   s.venue_id = 3
   s.name = 'Opeth'
   s.description = 'Blackwater Park Tour'
