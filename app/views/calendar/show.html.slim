@@ -24,19 +24,25 @@ br
   .col-md.text-center
     | Saturday
 
-.row
-  - previous_month_days = Date.current.
-  = previous_month_days
-  - wday.times do |day|
-    .col-md.day
-      = day
-  - (7-wday).times do |day|
-    .col-md.day
-      = day+1
 
-- days_in_month(current_month).times.each_slice(7) do |week|
+/ .row
+/   - wday = Date.current.wday
+/   - wday.times do |day|
+/     .col-md.day
+/       = day
+  / - previous_month_days = current_month_date -
+  / -
+  /   .col-md.day
+  /     = day+1
+
+- calculate_days_view.each_slice(7) do |week|
   .row
     - week.each do |day|
-      .col-md.day
-        = day + 1
+      - if week.length < 7
+        .col-md-2.day
+          = day
+      - else
+        .col-md.day
+          = day
+
 
