@@ -52,6 +52,7 @@ class Permission
     allow :sessions, [:new, :create, :destroy]
     allow :events, [:index, :show]
     allow :venues, [:index, :show]
+    allow :calendar, [:show]
 
     if user
       allow :users, [:edit, :update, :show]

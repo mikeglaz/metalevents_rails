@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :venues
   resources :password_reset, only: [:new, :create, :edit, :update]
 
+  resource :calendar, controller: 'calendar'
+
   root 'events#index'
   # root 'welcome#index'
 end

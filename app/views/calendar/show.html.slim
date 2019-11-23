@@ -1,0 +1,17 @@
+.row.justify-content-center
+  .col-md-2
+    = form_tag calendar_path, method: :get
+    = select_tag :month, options_for_select(Calendar::MONTHS, current_month), class: 'form-control'
+  .col-md-1
+    button.btn.btn-primary type='submit'
+      | Go
+br
+
+
+
+- days_in_month(current_month).times.each_slice(7) do |week|
+  .row
+    - week.each do |day|
+      .col-md.day
+        = day + 1
+

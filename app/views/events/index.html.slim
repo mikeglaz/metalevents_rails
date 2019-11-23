@@ -1,29 +1,17 @@
 h3 Events
 
-/ - @events.each do |event|
-/   = link_to event.name, event
-/   - if allow?(:events, :edit, event)
-/     '
-/     '|
-/     = link_to 'edit', edit_event_path(event)
+- @events.each do |event|
+  = link_to event.name, event
+  - if allow?(:events, :edit, event)
+    '
+    '|
+    = link_to 'edit', edit_event_path(event)
 
-/   - if allow?(:events, :destroy)
-/     '
-/     '|
-/     = link_to 'delete', event, method: :delete, data: { confirm: 'Are you sure?' }
-/   br
+  - if allow?(:events, :destroy)
+    '
+    '|
+    = link_to 'delete', event, method: :delete, data: { confirm: 'Are you sure?' }
+  br
 
 
-.row.justify-content-center
-  .col-md-2
-    select.form-control
-      = options_for_select(Event::MONTHS)
-  .col-md-1
-    button.btn.btn-primary
-      | Go
-br
 
-.row
-  - 7.times do |num|
-    .col-md.day
-      = num + 1
