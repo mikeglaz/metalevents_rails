@@ -8,6 +8,31 @@
 br
 
 
+.row
+  .col-md.text-center
+    | Sunday
+  .col-md.text-center
+    | Monday
+  .col-md.text-center
+    | Tuesday
+  .col-md.text-center
+    | Wednesday
+  .col-md.text-center
+    | Thursday
+  .col-md.text-center
+    | Friday
+  .col-md.text-center
+    | Saturday
+
+.row
+  - previous_month_days = Date.current.
+  = previous_month_days
+  - wday.times do |day|
+    .col-md.day
+      = day
+  - (7-wday).times do |day|
+    .col-md.day
+      = day+1
 
 - days_in_month(current_month).times.each_slice(7) do |week|
   .row
