@@ -1,10 +1,18 @@
 .row.justify-content-center
   .col-md-2
     = form_tag calendar_path, method: :get
-    = select_tag :month, options_for_select(Calendar::MONTHS, current_month), class: 'form-control'
+    = select_tag :selected_month, options_for_select(Calendar::MONTHS, current_month), class: 'form-control'
   .col-md-1
     button.btn.btn-primary type='submit'
       | Go
+br
+.row.justify-content-center
+  .col-1
+    = link_to '<<'
+  .col-3
+    = Date.current.strftime('%B %Y')
+  .col-1
+    = link_to '>>'
 br
 
 
@@ -39,10 +47,10 @@ br
   .row
     - week.each do |day|
       - if week.length < 7
-        .col-md-2.day
+        .col-1.day
           = day
       - else
-        .col-md.day
+        .col.day
           = day
 
 
