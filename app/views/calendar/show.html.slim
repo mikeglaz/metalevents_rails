@@ -6,13 +6,15 @@
     button.btn.btn-primary type='submit'
       | Go
 br
+
+= form_tag calendar_path, method: :get
 .row.justify-content-center
   .col-1
     = link_to '<<'
-  .col-3
+  .col-2
     = Date.current.strftime('%B %Y')
   .col-1
-    = link_to '>>'
+    = link_to '>>', month: 12
 br
 
 
