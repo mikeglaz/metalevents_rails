@@ -4,6 +4,10 @@
 .day {
   border: 1px solid #ced4da;
   height: 168px;
-}
 
+  &.not {
+    background-color: silver;
+    color: white;
+  }
+}
 

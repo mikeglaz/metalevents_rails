@@ -50,11 +50,11 @@ br
 - calculate_days_view.each_slice(7) do |week|
   .row
     - week.each do |day|
-      - if week.length < 7
-        .col-1.day
-          = day
-      - else
+      - if day.values.first == true
         .col.day
-          = day
+          = day.keys.first
+      - else
+        .col.day.not
+          = day.keys.first
 
-=console
+

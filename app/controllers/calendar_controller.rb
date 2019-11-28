@@ -54,25 +54,23 @@ class CalendarController < ApplicationController
     end_date = @selected_month_date.end_of_month
 
 
-    byebug
 
-    selected_month_hash = (start_date..end_date).map{|date| date.day}.map{ |day| {day => true}}.to_h
+
+    selected_month_array = (start_date..end_date).map{|date| date.day}.map{ |day| {day => true}}
 
 
     prev_month_start_date = start_date - first_day_of_week.days
     prev_month_end_date = start_date - 1.days
 
-    prev_month_hash = (prev_month_start_date..prev_month_end_date).map{|date| date.day}.map{ |day| {day => false}}.to_h
+    prev_month_array = (prev_month_start_date..prev_month_end_date).map{|date| date.day}.map{ |day| {day => false}}
 
     next_month_start_date = start_date + 1.days
     next_month_end_date = start_date + (6 - last_day_of_week).days
 
-    next_month_hash = (next_month_start_date..next_month_end_date).map{|date| date.day}.map{ |day| {day => false}}.tp_h
+    next_month_array = (next_month_start_date..next_month_end_date).map{|date| date.day}.map{ |day| {day => false}}
 
 
-
-
-    calendar_hash = prev_month_hash.merge(selected_month_hash.merge(next_month_hash))
+    @days_array = prev_month_array.concat(selected_month_array.concat(next_month_array))
 
 
 
@@ -88,16 +86,6 @@ class CalendarController < ApplicationController
 
 
     # next_month_date = @selected_month_date.next_month.change(day: 1) + (6-last_day_of_week)
-
-
-
-    @days_array = []
-
-    (start_date..end_date).each do |d|
-      @days_array << d.day
-    end
-
-    @days_array
 
 
   end
