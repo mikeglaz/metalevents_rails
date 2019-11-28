@@ -1,20 +1,22 @@
 .row.justify-content-center
   .col-md-2
     = form_tag calendar_path, method: :get
-    = select_tag :selected_month, options_for_select(Calendar::MONTHS, current_month), class: 'form-control'
+    = select_tag :month, options_for_select(Calendar::MONTHS, current_month), class: 'form-control'
   .col-md-1
     button.btn.btn-primary type='submit'
       | Go
 br
 
+=currently_selected_date
+
 = form_tag calendar_path, method: :get
 .row.justify-content-center
   .col-1
-    = link_to '<<'
+    = link_to '<<', month: prev_month
   .col-2
-    = Date.current.strftime('%B %Y')
+    = currently_selected_date.strftime('%B %Y')
   .col-1
-    = link_to '>>', month: 12
+    = link_to '>>', month: next_month
 br
 
 
@@ -55,4 +57,4 @@ br
         .col.day
           = day
 
-
+=console
