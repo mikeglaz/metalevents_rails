@@ -3,11 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .day {
   border: 1px solid #ced4da;
-  height: 168px;
+  height: 13vh;
 
   &.not {
     background-color: silver;
     color: white;
   }
 }
+
+
 
