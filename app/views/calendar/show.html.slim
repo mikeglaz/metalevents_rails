@@ -7,8 +7,6 @@
       | Go
 br
 
-=currently_selected_date
-
 = form_tag calendar_path, method: :get
 .row.justify-content-center
   .col-1
@@ -36,25 +34,28 @@ br
   .col-md.text-center
     | Saturday
 
-
-/ .row
-/   - wday = Date.current.wday
-/   - wday.times do |day|
-/     .col-md.day
-/       = day
-  / - previous_month_days = current_month_date -
-  / -
-  /   .col-md.day
-  /     = day+1
-
-- calculate_days_view.each_slice(7) do |week|
+- @event_dates.each_slice(7) do |week|
   .row
-    - week.each do |day|
-      - if day.values.first == true
+    - week.each do |date|
+      - events = @events.select do |event|
+        - event.date_and_time.to_date == date.to_date
+
+      - if date.month == current_month
         .col.day
-          = day.keys.first
+          = date.day
+          br
+          - events.each do |event|
+            = link_to event.name, event
       - else
-        .col.day.not
-          = day.keys.first
-
-
+        .col.not.day
+          = date.day
+          br
+          - events.each do |event|
+            = link_to event.name, event
+      / - if day.values.first == true
+      /   .col.day
+      /     = day.keys.first
+      / - else
+      /   .col.day.not
+      /     = day.keys.first
+/ =console

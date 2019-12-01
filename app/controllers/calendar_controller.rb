@@ -10,11 +10,15 @@ class CalendarController < ApplicationController
     else
       @currently_selected_date = DateTime.current
     end
+
+    @event_dates = calendar_day_grid
+
+    @events = Event.where(date_and_time: @prev_month_start_date..@next_month_end_date )
   end
 
-  def days_in_month(month)
-    DateTime.new(YEAR, month, 1).end_of_month.day
-  end
+  # def days_in_month(month)
+  #   DateTime.new(YEAR, month, 1).end_of_month.day
+  # end
 
   def current_month
     @currently_selected_date.month
@@ -28,8 +32,8 @@ class CalendarController < ApplicationController
     @currently_selected_date.prev_month.month
   end
 
-  def select_month(month_num)
-    @selected_month_date = DateTime.new(YEAR, month_num, 1)
+  def select_month(month_num = @currently_selected_date.month)
+    @currently_selected_date = DateTime.new(YEAR, month_num, 1)
   end
 
   # def currently_selected_date=(date)
@@ -40,37 +44,40 @@ class CalendarController < ApplicationController
   #   @currently_selected_date
   # end
 
-  def calculate_days_view
+  def calendar_day_grid
     if(params[:month])
       select_month(params[:month].to_i)
     else
       select_month(current_month)
     end
-    # 6 (Friday)
-    first_day_of_week = @selected_month_date.wday
-    last_day_of_week = @selected_month_date.end_of_month.wday
 
-    start_date = @selected_month_date.change(day: 1)
-    end_date = @selected_month_date.end_of_month
+    # Sun(0) - Sat(6)
+    first_day_of_week = @currently_selected_date.wday
+    last_day_of_week = @currently_selected_date.end_of_month.wday
 
-
+    start_date = @currently_selected_date.beginning_of_month
+    end_date = @currently_selected_date.end_of_month
 
 
     selected_month_array = (start_date..end_date).map{|date| date.day}.map{ |day| {day => true}}
 
 
-    prev_month_start_date = start_date - first_day_of_week.days
+    @prev_month_start_date = start_date - first_day_of_week.days
     prev_month_end_date = start_date - 1.days
 
-    prev_month_array = (prev_month_start_date..prev_month_end_date).map{|date| date.day}.map{ |day| {day => false}}
+    prev_month_array = (@prev_month_start_date..prev_month_end_date).map{|date| date.day}.map{ |day| {day => false}}
 
-    next_month_start_date = start_date + 1.days
-    next_month_end_date = start_date + (6 - last_day_of_week).days
+    next_month_start_date = start_date.next_month
+    @next_month_end_date = next_month_start_date + (6 - last_day_of_week).days
 
-    next_month_array = (next_month_start_date..next_month_end_date).map{|date| date.day}.map{ |day| {day => false}}
+    next_month_array = (next_month_start_date...@next_month_end_date).map{|date| date.day}.map{ |day| {day => false}}
 
 
-    @days_array = prev_month_array.concat(selected_month_array.concat(next_month_array))
+    prev_month_array.concat(selected_month_array.concat(next_month_array))
+
+    @prev_month_start_date...@next_month_end_date
+
+
 
 
 
@@ -82,7 +89,7 @@ class CalendarController < ApplicationController
     #   end_date += (6-last_day_of_week).days
     # end
     # Oct 26
-    # prev_month_date = @selected_month_date.change(day: 1) - first_day_of_week.days
+    # prev_month_date = @currently_selected_date.change(day: 1) - first_day_of_week.days
 
 
     # next_month_date = @selected_month_date.next_month.change(day: 1) + (6-last_day_of_week)
