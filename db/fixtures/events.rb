@@ -31,7 +31,7 @@ Event.seed do |s|
   s.venue_id = 2
   s.name = 'Arcturus'
   s.description = 'Church Burning Tour 2019'
-  s.date_and_time = DateTime.new(2019, 10, 23, 20, 0, 0)
+  s.date_and_time = DateTime.new(2019, 10, 1, 20, 0, 0)
 end
 
 Event.seed do |s|

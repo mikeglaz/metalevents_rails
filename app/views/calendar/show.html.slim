@@ -37,25 +37,18 @@ br
 - @event_dates.each_slice(7) do |week|
   .row
     - week.each do |date|
-      - events = @events.select do |event|
-        - event.date_and_time.to_date == date.to_date
-
       - if date.month == current_month
         .col.day
           = date.day
-          br
-          - events.each do |event|
+          - get_events_for_date(date).each do |event|
+            br
             = link_to event.name, event
       - else
         .col.not.day
           = date.day
-          br
-          - events.each do |event|
+          - get_events_for_date(date).each do |event|
+            br
             = link_to event.name, event
-      / - if day.values.first == true
-      /   .col.day
-      /     = day.keys.first
-      / - else
-      /   .col.day.not
-      /     = day.keys.first
-/ =console
+
+
+/ = console

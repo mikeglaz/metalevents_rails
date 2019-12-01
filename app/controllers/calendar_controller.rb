@@ -1,5 +1,5 @@
 class CalendarController < ApplicationController
-  helper_method :days_in_month, :current_month, :calculate_days_view, :select_month, :next_month, :prev_month, :currently_selected_date
+  helper_method :days_in_month, :current_month, :calculate_days_view, :select_month, :next_month, :prev_month, :currently_selected_date, :get_events_for_date
   attr_reader :currently_selected_date
 
   YEAR = 2019
@@ -34,6 +34,12 @@ class CalendarController < ApplicationController
 
   def select_month(month_num = @currently_selected_date.month)
     @currently_selected_date = DateTime.new(YEAR, month_num, 1)
+  end
+
+  def get_events_for_date(date)
+    @events.select do |event|
+      event.date_and_time.to_date == date.to_date
+    end
   end
 
   # def currently_selected_date=(date)
