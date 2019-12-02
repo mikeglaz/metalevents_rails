@@ -2,6 +2,17 @@ h3 Venues
 
 - @venues.each do |venue|
   = link_to venue.name, venue
+  - if allow?(:venues, :edit)
+    '
+    '|
+    = link_to 'edit', edit_venue_path(venue)
+  - if allow?(:venues, :destroy)
+    '
+    '|
+    = link_to 'delete', venue, method: :delete, data: { confirm: 'Are you sure?' }
   br
+
+
+
 
 

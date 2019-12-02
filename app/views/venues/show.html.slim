@@ -16,16 +16,4 @@ h5 Upcoming Events
   = link_to event.name, event
   br
 
-/ = form_for @venue do |f|
-/   = f.fields_for :events do |event_fields|
-/     = event_fields.label :name
-/     = event_fields.text_field :name
-/     br
-/     = event_fields.label :date_and_time
-/     = event_fields.datetime_select :date_and_time
-/     br
-/     = event_fields.label :description
-/     = event_fields.text_area :description
-/     br
-/     = f.submit
-/ end
+

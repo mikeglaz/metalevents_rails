@@ -5,15 +5,20 @@ nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-dark
 
   #links.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      - if current_user && current_user.admin?
+      - if current_user&.admin?
         li.nav-item
           = link_to 'Users', users_path, class: 'nav-link'
       li.nav-item
         = link_to 'Calendar', calendar_path, class: 'nav-link'
       li.nav-item
         = link_to 'Events', events_path, class: 'nav-link'
-      li.nav-item
-        = link_to 'Venues', venues_path, class: 'nav-link'
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle[href="#" data-toggle="dropdown"]
+          | Venues
+        .dropdown-menu
+          = link_to 'Venues', venues_path, class: 'dropdown-item'
+          - if current_user&.admin?
+            = link_to 'New Venue', new_venue_path, class: 'dropdown-item'
       li.nav-item
         = link_to 'New Event', new_event_path, class: 'nav-link'
     ul.navbar-nav
