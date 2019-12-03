@@ -39,30 +39,30 @@ class CalendarController < ApplicationController
     end
   end
 
-  def currently_selected_date
-    params[:date]
-    @currently_selected_date.month
-  end
+  # def currently_selected_date
+  #   params[:date]
+  #   @currently_selected_date.month
+  # end
 
-  def next_month
-    if current_date.month == 12
-      @year += 1
-    end
+  # def next_month
+  #   if current_date.month == 12
+  #     @year += 1
+  #   end
 
-    @currently_selected_date.next_month.month
-  end
+  #   @currently_selected_date.next_month.month
+  # end
 
-  def prev_month
-    if current_date.month == 1
-      @year -= 1
-    end
+  # def prev_month
+  #   if current_date.month == 1
+  #     @year -= 1
+  #   end
 
-    @currently_selected_date.prev_month.month
-  end
+  #   @currently_selected_date.prev_month.month
+  # end
 
-  def select_month(month_num = @currently_selected_date.month)
-    @currently_selected_date = DateTime.new(@year, month_num, 1)
-  end
+  # def select_month(month_num = @currently_selected_date.month)
+  #   @currently_selected_date = DateTime.new(@year, month_num, 1)
+  # end
 
   def get_events_for_date(date)
     @events.select do |event|

@@ -3,8 +3,8 @@ Event.seed do |s|
   s.user_id = 1
   s.venue_id = 3
   s.name = 'Abigor'
-  s.description = 'Nachtnymnen Tour'
-  s.date_and_time = DateTime.new(2019, 9, 10, 19, 0, 0)
+  s.description = 'Nachthymnen Tour'
+  s.date_and_time = DateTime.new(2019, 12, 29, 19, 0, 0)
 end
 
 Event.seed do |s|
@@ -13,7 +13,7 @@ Event.seed do |s|
   s.venue_id = 3
   s.name = 'Ghost'
   s.description = 'A Pale Tour Named Death'
-  s.date_and_time = DateTime.new(2019, 9, 30, 19, 0, 0)
+  s.date_and_time = DateTime.new(2020, 1, 1, 19, 0, 0)
 end
 
 Event.seed do |s|
@@ -22,7 +22,7 @@ Event.seed do |s|
   s.venue_id = 1
   s.name = 'Metallica'
   s.description = 'World Tour 2019'
-  s.date_and_time = DateTime.new(2019, 10, 1, 20, 0, 0)
+  s.date_and_time = DateTime.new(2020, 1, 31, 20, 0, 0)
 end
 
 Event.seed do |s|
@@ -31,7 +31,7 @@ Event.seed do |s|
   s.venue_id = 2
   s.name = 'Arcturus'
   s.description = 'Church Burning Tour 2019'
-  s.date_and_time = DateTime.new(2019, 10, 1, 20, 0, 0)
+  s.date_and_time = DateTime.new(2020, 2, 1, 20, 0, 0)
 end
 
 Event.seed do |s|
@@ -40,7 +40,7 @@ Event.seed do |s|
   s.venue_id = 3
   s.name = 'Opeth'
   s.description = 'Blackwater Park Tour'
-  s.date_and_time = DateTime.new(2019, 11, 1, 21, 0, 0)
+  s.date_and_time = DateTime.new(2020, 2, 5, 21, 0, 0)
 end
 
 Event.seed do |s|
@@ -49,5 +49,5 @@ Event.seed do |s|
   s.venue_id = 3
   s.name = 'Animals As Leaders'
   s.description = 'Tempting Death Tour'
-  s.date_and_time = DateTime.new(2019, 11, 3, 19, 0, 0)
+  s.date_and_time = DateTime.new(2020, 3, 3, 19, 0, 0)
 end

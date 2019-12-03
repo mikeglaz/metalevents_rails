@@ -5,7 +5,7 @@ h3
 
 = @event.description
 br
-= @event.venue.name
+= link_to @event.venue.name, @event.venue
 br
 = @event.date_and_time.strftime("%a, %b %e, %l:%M %p")
 br
