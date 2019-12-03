@@ -12,7 +12,7 @@ class Calendar < ApplicationRecord
     months
   end
 
-  def self.generate_days_grid
+  def self.generate_days_grid(month, year)
     day = Struct.new(:month, :year, :num_days, :first_day_of_week)
 
     date = DateTime.current

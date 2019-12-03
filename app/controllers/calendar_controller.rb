@@ -64,7 +64,10 @@ class CalendarController < ApplicationController
   def calendar_day_grid
     month, year = params[:date].split('/')
 
+    date = DateTime.new(year, month, 1)
 
+    num_days = date.end_of_month.day
+    weekday_start = date.beginning_of_month.wday
 
     # if(params[:month])
     #   select_month(params[:month].to_i)
