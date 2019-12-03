@@ -1,22 +1,22 @@
 class CalendarController < ApplicationController
-  helper_method :current_date, :next_month, :prev_month, :currently_selected_date, :get_events_for_date, :year
+  helper_method :current_month, :next_month, :prev_month, :currently_selected_date, :get_events_for_date, :year
   attr_reader :currently_selected_date
 
   def show
 
-    if params[:year]
-      @year = params[:year].to_i
-    else
-      @year = DateTime.current.year
-    end
+    # if params[:year]
+    #   @year = params[:year].to_i
+    # else
+    #   @year = DateTime.current.year
+    # end
 
-    if params[:month]
-      @currently_selected_date = DateTime.new(current_date.year, params[:month].to_i, 1)
-    else
-      @currently_selected_date = DateTime.current
-    end
+    # if params[:month]
+    #   @currently_selected_date = DateTime.new(current_date.year, params[:month].to_i, 1)
+    # else
+    #   @currently_selected_date = DateTime.current
+    # end
 
-    @event_dates = calendar_day_grid
+    @day_grid = calendar_day_grid
 
     @events = Event.where(date_and_time: @prev_month_start_date..@next_month_end_date )
   end
@@ -25,8 +25,18 @@ class CalendarController < ApplicationController
     @year
   end
 
-  def current_date
-    DateTime.current
+  def current_month
+    month, year = converted_date
+    month
+  end
+
+  def converted_date
+    # byebug
+    if params[:date]
+      params[:date].split('_').map(&:to_i)
+    else
+      [DateTime.current.month, DateTime.current.year]
+    end
   end
 
   def currently_selected_date
@@ -62,12 +72,11 @@ class CalendarController < ApplicationController
 
 
   def calendar_day_grid
-    month, year = params[:date].split('/')
+    selected_month, selected_year = converted_date
+    working_date = DateTime.new(selected_year, selected_month, 1)
 
-    date = DateTime.new(year, month, 1)
-
-    num_days = date.end_of_month.day
-    weekday_start = date.beginning_of_month.wday
+    weekday_start = working_date.beginning_of_month.wday
+    weekday_end = working_date.end_of_month.wday
 
     # if(params[:month])
     #   select_month(params[:month].to_i)
@@ -85,19 +94,19 @@ class CalendarController < ApplicationController
 
     # selected_month_array = (start_date..end_date).map{|date| date.day}.map{ |day| {day => true}}
 
-    # @prev_month_start_date = start_date - first_day_of_week.days
+    @prev_month_start_date = working_date - weekday_start.days
     # prev_month_end_date = start_date - 1.days
 
     # prev_month_array = (@prev_month_start_date..prev_month_end_date).map{|date| date.day}.map{ |day| {day => false}}
 
     # next_month_start_date = start_date.next_month
-    # @next_month_end_date = next_month_start_date + (6 - last_day_of_week).days
+    @next_month_end_date = working_date.end_of_month + (6 - weekday_end).days
 
     # next_month_array = (next_month_start_date...@next_month_end_date).map{|date| date.day}.map{ |day| {day => false}}
 
 
     # prev_month_array.concat(selected_month_array.concat(next_month_array))
 
-    # @prev_month_start_date...@next_month_end_date
+    @prev_month_start_date...@next_month_end_date
   end
 end

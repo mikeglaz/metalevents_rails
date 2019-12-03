@@ -5,25 +5,25 @@ class Calendar < ApplicationRecord
     date = DateTime.current
 
     12.times do |i|
-      months << [date.strftime("%b %Y"), date.strftime("%m/%y")]
+      months << [date.strftime("%b %Y"), date.strftime("%m_%Y")]
       date = date.next_month
     end
 
     months
   end
 
-  def self.generate_days_grid(month, year)
-    day = Struct.new(:month, :year, :num_days, :first_day_of_week)
+  # def self.generate_days_grid(month, year)
+  #   day = Struct.new(:month, :year, :num_days, :first_day_of_week)
 
-    date = DateTime.current
+  #   date = DateTime.current
 
-    days = []
+  #   days = []
 
-    12.times do |i|
-      days << day.new(date.month, date.year, date.end_of_month.day, date.beginning_of_month.wday)
-      date = date.next_month
-    end
+  #   12.times do |i|
+  #     days << day.new(date.month, date.year, date.end_of_month.day, date.beginning_of_month.wday)
+  #     date = date.next_month
+  #   end
 
-    days
-  end
+  #   days
+  # end
 end
