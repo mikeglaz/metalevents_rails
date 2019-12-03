@@ -53,6 +53,7 @@ class Permission
     allow :events, [:index, :show]
     allow :venues, [:index, :show]
     allow :calendar, [:show]
+    allow :password_reset, [:new, :create, :edit, :update]
 
     if user
       allow :users, [:edit, :update, :show]

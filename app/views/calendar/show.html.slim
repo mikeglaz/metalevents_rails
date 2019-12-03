@@ -10,11 +10,11 @@ br
 = form_tag calendar_path, method: :get
 .row.justify-content-center
   .col-1
-    = link_to '<<', month: prev_month
+    = link_to '<<', month: prev_month, year: year
   .col-2
     = currently_selected_date.strftime('%B %Y')
   .col-1
-    = link_to '>>', month: next_month
+    = link_to '>>', month: next_month, year: year
 br
 
 

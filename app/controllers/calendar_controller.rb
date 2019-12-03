@@ -1,12 +1,16 @@
 class CalendarController < ApplicationController
-  helper_method :days_in_month, :current_month, :calculate_days_view, :select_month, :next_month, :prev_month, :currently_selected_date, :get_events_for_date
+  helper_method :days_in_month, :current_month, :calculate_days_view, :select_month, :next_month, :prev_month, :currently_selected_date, :get_events_for_date, :year
   attr_reader :currently_selected_date
 
-  YEAR = 2019
-
   def show
+    if params[:year]
+      @year = params[:year].to_i
+    else
+      @year = DateTime.current.year
+    end
+
     if params[:month]
-      @currently_selected_date = DateTime.new(YEAR, params[:month].to_i, 1)
+      @currently_selected_date = DateTime.new(@year, params[:month].to_i, 1)
     else
       @currently_selected_date = DateTime.current
     end
@@ -20,20 +24,32 @@ class CalendarController < ApplicationController
   #   DateTime.new(YEAR, month, 1).end_of_month.day
   # end
 
+  def year
+    @year
+  end
+
   def current_month
     @currently_selected_date.month
   end
 
   def next_month
+    if current_month == 12
+      @year += 1
+    end
+
     @currently_selected_date.next_month.month
   end
 
   def prev_month
+    if current_month == 1
+      @year -= 1
+    end
+
     @currently_selected_date.prev_month.month
   end
 
   def select_month(month_num = @currently_selected_date.month)
-    @currently_selected_date = DateTime.new(YEAR, month_num, 1)
+    @currently_selected_date = DateTime.new(@year, month_num, 1)
   end
 
   def get_events_for_date(date)
