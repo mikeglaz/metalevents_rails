@@ -1,16 +1,29 @@
 class Calendar < ApplicationRecord
-  MONTHS = [
-    ['January', 1],
-    ['February', 2],
-    ['March', 3],
-    ['April', 4],
-    ['May', 5],
-    ['June', 6],
-    ['July', 7],
-    ['August', 8],
-    ['September', 9],
-    ['October', 10],
-    ['November', 11],
-    ['December', 12]
-  ]
+
+  def self.generate_months
+    months = []
+    date = DateTime.current
+
+    12.times do |i|
+      months << [date.strftime("%b %Y"), date.strftime("%m/%y")]
+      date = date.next_month
+    end
+
+    months
+  end
+
+  def self.generate_days_grid
+    day = Struct.new(:month, :year, :num_days, :first_day_of_week)
+
+    date = DateTime.current
+
+    days = []
+
+    12.times do |i|
+      days << day.new(date.month, date.year, date.end_of_month.day, date.beginning_of_month.wday)
+      date = date.next_month
+    end
+
+    days
+  end
 end

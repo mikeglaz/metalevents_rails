@@ -185,4 +185,10 @@ RSpec.describe Permission, type: :model do
       end
     end
   end
+
+  context 'calendar' do
+    context 'as guest' do
+      it 'allows'
+    end
+  end
 end

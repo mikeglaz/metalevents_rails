@@ -56,7 +56,9 @@ class Permission
     allow :password_reset, [:new, :create, :edit, :update]
 
     if user
-      allow :users, [:edit, :update, :show]
+      allow :users, [:edit, :update, :show] do |u|
+        u.id === user.id
+      end
       allow :events, [:new, :create]
       allow :events, [:edit, :update] do |event|
         event.user_id == user.id
@@ -67,7 +69,6 @@ class Permission
 
   def allow?(controller, action=nil, resource=nil)
     allowed = @allow_all || @allowed_actions[controller.to_s][action.to_s]
-
 
     if allowed
       if allowed == true

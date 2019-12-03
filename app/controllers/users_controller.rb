@@ -61,11 +61,12 @@ class UsersController < ApplicationController
       end
     end
 
-
-
     def admin_user
       redirect_to root_path unless current_user.admin?
     end
 
+    def current_resource
+      @current_resource ||= User.find(params[:id]) if params[:id]
+    end
 
 end

@@ -1,21 +1,22 @@
 .row.justify-content-center
   .col-md-2
     = form_tag calendar_path, method: :get
-    = select_tag :month, options_for_select(Calendar::MONTHS, current_month), class: 'form-control'
+    = select_tag :date, options_for_select(Calendar.generate_months), class: 'form-control'
   .col-md-1
     button.btn.btn-primary type='submit'
       | Go
 br
 
-= form_tag calendar_path, method: :get
-.row.justify-content-center
-  .col-1
-    = link_to '<<', month: prev_month, year: year
-  .col-2
-    = currently_selected_date.strftime('%B %Y')
-  .col-1
-    = link_to '>>', month: next_month, year: year
-br
+/ = form_tag calendar_path, method: :get
+/ .row.justify-content-center
+/   .col-1
+/     - if currently_selected_date.month > current_date.month
+/       = link_to '<<', month: prev_month
+/   .col-2
+/     = currently_selected_date.strftime('%B %Y')
+/   .col-1
+/     = link_to '>>', month: next_month
+/ br
 
 
 .row
@@ -37,7 +38,7 @@ br
 - @event_dates.each_slice(7) do |week|
   .row
     - week.each do |date|
-      - if date.month == current_month
+      - if date.month == current_date.month
         .col.day
           = date.day
           - get_events_for_date(date).each do |event|
