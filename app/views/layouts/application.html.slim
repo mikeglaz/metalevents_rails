@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | Metalivents
+      | Metalevents
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
@@ -10,7 +10,7 @@ html
     = render 'layouts/navigation'
     .mb-5
     .row.justify-content-center
-      h1.display-3.pt-3 Metalivents
+      = image_tag 'metalevents.png'
     .container
       - flash.each do |message_type, message|
         |  <div class="alert alert-
