@@ -1,16 +1,41 @@
-h3 Venues
+.row.justify-content-center
+  h4 Participating Venues
 
-- @venues.each do |venue|
-  = link_to venue.name, venue
-  - if allow?(:venues, :edit)
-    '
-    '|
-    = link_to 'edit', edit_venue_path(venue)
-  - if allow?(:venues, :destroy)
-    '
-    '|
-    = link_to 'delete', venue, method: :delete, data: { confirm: 'Are you sure?' }
-  br
+table.table.table-hover.table-striped
+  thead.thead-dark
+    tr
+      th scope="col"
+        | Venue
+      th scope="col"
+        | Address
+
+
+  tbody
+    - @venues.each do |venue|
+      tr
+        td
+          = link_to venue.name, venue
+        td
+          = venue.street
+          br
+          = venue.city
+          |,&nbsp;
+          = venue.state
+
+
+/ h3 Venues
+
+/ - @venues.each do |venue|
+/   = link_to venue.name, venue
+/   - if allow?(:venues, :edit)
+/     '
+/     '|
+/     = link_to 'edit', edit_venue_path(venue)
+/   - if allow?(:venues, :destroy)
+/     '
+/     '|
+/     = link_to 'delete', venue, method: :delete, data: { confirm: 'Are you sure?' }
+/   br
 
 
 

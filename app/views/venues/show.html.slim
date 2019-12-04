@@ -1,19 +1,37 @@
-h3
-  = @venue.name
-  |&nbsp;
-  = link_to '(link)', @venue.url, target: '_blank'
-= @venue.street
-br
-= @venue.city
-|,&nbsp;
-= @venue.state
-br
-br
+.row.justify-content-center
+  h4
+    =@venue.name
+  | &nbsp;
+  = link_to @venue.url, target: '_blank' do
+    i.fa.fa-external-link
+.row.justify-content-center
+  = @venue.street
+.row.justify-content-center
+  = @venue.city
+  |,&nbsp;
+  = @venue.state
+  br
+  br
+
+
 
 h5 Upcoming Events
 
-- @venue.events.each do |event|
-  = link_to event.name, event
-  br
+table.table.table-sm.col-4.table-hover.table-striped
+  thead.thead-dark
+    tr
+      th scope="col"
+        | Event
+      th scope="col"
+        | Date/Time
+
+  tbody
+    - @venue.events.each do |event|
+      tr
+        td
+          = link_to event.name, event
+        td
+          = event.date_and_time.strftime("%b %e, %l:%I %P")
+
 
 
