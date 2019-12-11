@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_232050) do
 
   create_table "venues", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "street"
+    t.string "address"
     t.string "city"
     t.string "state"
     t.string "url"
