@@ -1,5 +1,5 @@
 .row.justify-content-center
-  .col-md-2
+  .col-4.col-md-3.col-lg-2
     = form_tag calendar_path, method: :get
     = select_tag :date, options_for_select(Calendar.generate_months, params[:date]), class: 'form-control'
   .col-md-1
@@ -7,32 +7,20 @@
       | Go
 br
 
-/ = form_tag calendar_path, method: :get
-/ .row.justify-content-center
-/   .col-1
-/     - if currently_selected_date.month > current_date.month
-/       = link_to '<<', month: prev_month
-/   .col-2
-/     = currently_selected_date.strftime('%B %Y')
-/   .col-1
-/     = link_to '>>', month: next_month
-/ br
-
-
 .row
-  .col-md.text-center
+  .col.text-center
     | Sunday
-  .col-md.text-center
+  .col.text-center
     | Monday
-  .col-md.text-center
+  .col.text-center
     | Tuesday
-  .col-md.text-center
+  .col.text-center
     | Wednesday
-  .col-md.text-center
+  .col.text-center
     | Thursday
-  .col-md.text-center
+  .col.text-center
     | Friday
-  .col-md.text-center
+  .col.text-center
     | Saturday
 
 - @day_grid.each_slice(7) do |week|
