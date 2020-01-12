@@ -12,3 +12,7 @@ br
 
 - if allow?(:events, :edit, @event)
   = link_to 'Edit Event', edit_event_path(@event)
+br
+- if allow?(:events, :destroy)
+  = link_to "Delete Event", @event, method: :delete, data: { confirm: "Are you sure?" }
+
