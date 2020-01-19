@@ -9,26 +9,9 @@ end
 
 User.seed do |s|
   s.id = 2
-  s.name = 'Lekizja Dingle'
-  s.email = 'lekeziah.dingle@gmail.com'
+  s.name = 'Michael Gmail'
+  s.email = 'mikeglaz@gmail.com'
   s.password = 'a'
   s.admin = false
   s.activated = true
-end
-
-User.seed do |s|
-  s.id = 3
-  s.name = 'Matt Glaz'
-  s.email = 'mattglaz@gmail.com'
-  s.password = 'a'
-  s.admin = false
-  s.activated = true
-end
-
-User.seed do |s|
-  s.id = 4
-  s.name = 'Clarisse Behr'
-  s.email = 'clarisse.behr@gmail.com'
-  s.password = 'a'
-  s.admin = false
 end
