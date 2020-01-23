@@ -43,6 +43,7 @@ gem 'bootstrap4-datetime-picker-rails'
 gem 'font-awesome-sass', '4.7.0'
 # gem 'sassc-rails'
 gem 'sass-rails'
+gem 'seed-fu'
 # MG
 
 group :development, :test do
@@ -51,7 +52,6 @@ group :development, :test do
   # MG
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'seed-fu'
   # gem 'guard-rspec', require: false
   # MG
 end
