@@ -41,7 +41,7 @@ gem 'decent_exposure', '3.0.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap4-datetime-picker-rails'
 gem 'font-awesome-sass', '4.7.0'
-# gem 'sassc-rails'
+gem 'sassc-rails'
 gem 'sass-rails'
 # MG
 
