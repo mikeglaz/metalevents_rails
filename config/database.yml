@@ -51,4 +51,4 @@ production:
   <<: *default
   database: metalivents_production
   username: metalivents
-  password: <%= ENV['METALIVENTS_DATABASE_PASSWORD'] %>
+  password: #<%= ENV['METALIVENTS_DATABASE_PASSWORD'] %>
