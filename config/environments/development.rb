@@ -31,13 +31,13 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
   config.action_mailer.smtp_settings = {
     :user_name => 'apikey',
-    :password => ENV['SENDGRID_API_KEY'],
+    :password => Rails.application.credentials.sendgrid_api_key,
     :domain => 'metalevents.mikeglaz.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
@@ -45,7 +45,7 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { host: 'mikeglaz.com', protocol: 'http' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000', protocol: 'http' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
