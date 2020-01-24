@@ -38,14 +38,14 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => 'apikey',
     :password => ENV['SENDGRID_API_KEY'],
-    :domain => 'mikeglaz.com',
+    :domain => 'metalevents.mikeglaz.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { host: 'localhost:3001', protocol: 'http' }
+  config.action_mailer.default_url_options = { host: 'mikeglaz.com', protocol: 'http' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
