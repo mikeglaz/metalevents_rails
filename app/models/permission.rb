@@ -16,7 +16,10 @@ class Permission
       allow :events, [:edit, :update] do |event|
         event.user_id == user.id
       end
-      allow_all if user.admin?
+    end
+
+    if user&.admin?
+      allow_all
     end
   end
 
