@@ -1,4 +1,6 @@
 class Permission
+  attr_reader :allowed_actions
+
   def initialize(user)
     allow :users, [:new, :create]
     allow :sessions, [:new, :create, :destroy]
@@ -9,17 +11,19 @@ class Permission
     allow :account_activation, [:edit]
 
     if user
-      allow :users, [:edit, :update, :show] do |u|
-        u.id === user.id
+      allow :users, [:index, :edit, :update, :show] do |u|
+        # byebug
+        u.id == user.id
       end
+
+      if user.admin?
+        allow_all
+      end
+
       allow :events, [:new, :create]
       allow :events, [:edit, :update] do |event|
         event.user_id == user.id
       end
-    end
-
-    if user&.admin?
-      allow_all
     end
   end
 
