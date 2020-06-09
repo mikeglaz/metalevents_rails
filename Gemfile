@@ -52,6 +52,7 @@ group :development, :test do
   # MG
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'pry'
   # gem 'guard-rspec', require: false
   # MG
 end
